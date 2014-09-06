@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 ruby '2.1.2'
@@ -40,3 +41,5 @@ gem 'spring',        group: :development
 gem 'neo4j', '~> 3.0.0.rc.3'
 gem 'foreman', '0.75.0'
 gem 'dotenv-rails', '~> 0.11.1', :groups => [:development, :test]
+gem 'rails_12factor', group: :production
+gem 'unicorn'
