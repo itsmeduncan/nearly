@@ -1,0 +1,9 @@
+<h1><%= @item.description %> <%= @instances.sum(&:quantity) %></h1>
+<table>
+<% @instances.each do |inst| %>
+  <tr>
+    <td><%= inst.traits.collect { |f| f.description }.join " " %></td>
+    <td><%= inst.quantity %></td>
+  </tr>
+<% end %>
+</table>

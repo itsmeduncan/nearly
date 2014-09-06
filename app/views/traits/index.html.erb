@@ -1,0 +1,17 @@
+<h1><%= @item.description %></h1>
+<% @traits.each do |dimension, traits| %>
+  <h2><%= dimension %></h2>
+  <ul>
+  <% traits.each do |trait| %>
+    <li><%= trait.description %></li>
+  <% end %>
+  <div>
+    <%= form_tag item_traits_path(@item) do %>
+      <%= hidden_field_tag :dimension_name, dimension %>
+      <%= label_tag :description %>
+      <%= text_field_tag :description %>
+      <%= submit_tag %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

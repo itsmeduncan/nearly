@@ -1,0 +1,9 @@
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.description, edit_item_path(item) %></td>
+      <td><%= link_to 'Traits', item_traits_path(item) %></td>
+      <td><%= link_to 'Instances', item_instances_path(item) %></td>
+    </tr>
+  <% end %>
+</table>
