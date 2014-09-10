@@ -1,9 +1,28 @@
-<h1><%= @item.description %> <%= @instances.sum(&:quantity) %></h1>
-<table>
-<% @instances.each do |inst| %>
-  <tr>
-    <td><%= inst.traits.collect { |f| f.description }.join " " %></td>
-    <td><%= inst.quantity %></td>
-  </tr>
-<% end %>
-</table>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-8' %>
+      <div class="page-header">
+        <h1><%= @item.description.pluralize %> <small><%= @instances.sum(&:quantity) %></small></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-8' %>
+      <ul class="list-group">
+        <% @instances.each do |inst| %>
+          <li class="list-group-item">
+            <span class='badge'><%= inst.quantity %></span>
+            <%= inst.traits.collect { |f| f.description }.join " " %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <%= link_to 'New Instance', new_item_instance_path(@item), class: 'btn btn-primary', role: 'button' %>
+    </div>
+  </div>
+</div>

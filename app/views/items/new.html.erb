@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='row'>
+    <div class="page-header">
+      <h1>New item</h1>
+    </div>
+  </div>
+
+  <% if flash.present? %>
+    <div class='row'>
+      <%= render partial: 'layouts/alerts' %>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class='col-md-4'%>
+      <%= form_for @item do |f| %>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Item description' %>
+        </div>
+        <%= f.submit 'Create', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', items_path, class: 'btn btn-default', role: 'button' %>
+      <% end %>
+    </div>
+  </div>

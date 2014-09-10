@@ -1,17 +1,36 @@
-<h1><%= @item.description %></h1>
-<% @traits.each do |dimension, traits| %>
-  <h2><%= dimension %></h2>
-  <ul>
-  <% traits.each do |trait| %>
-    <li><%= trait.description %></li>
-  <% end %>
-  <div>
-    <%= form_tag item_traits_path(@item) do %>
-      <%= hidden_field_tag :dimension_name, dimension %>
-      <%= label_tag :description %>
-      <%= text_field_tag :description %>
-      <%= submit_tag %>
-    <% end %>
-    </ul>
+<div class='container'>
+  <div class='row'>
+    <div class="page-header">
+      <h1><%= @item.description %></h1>
+    </div>
   </div>
-<% end %>
+
+  <% if flash.present? %>
+    <div class='row'>
+      <%= render partial: 'layouts/alerts' %>
+    </div>
+  <% end %>
+
+  <% @traits.each do |dimension, traits| %>
+    <div class='row'>
+      <h2><%= dimension %> <small><%= traits.size %></small></h2>
+      <ul class="list-group">
+        <% traits.each do |trait| %>
+          <li class='list-group-item'><%= trait.description %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='row'>
+      <div class='col-md-4'%>
+        <%= form_for item_traits_path(@item) do |f| %>
+          <%= f.hidden_field dimension %>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Trait description' %>
+          </div>
+          <%= f.submit 'Create', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

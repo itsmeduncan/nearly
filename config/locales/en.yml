@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+
+  items:
+    create: 'Item created'
